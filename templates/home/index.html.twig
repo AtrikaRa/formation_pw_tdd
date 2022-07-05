@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="bg-white p-5 contact-form">
+    <div class="form-group">
+    <h1>Nous contacter</h1>
+    {{ form(form) }}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% for message in app.flashes('invalid') %}
+        <div class="alert alert-danger invalid-feedback">
+            {{ message }}
+        </div>
+    {% endfor %}
+</div>
+
+</div>
+{% endblock %}
