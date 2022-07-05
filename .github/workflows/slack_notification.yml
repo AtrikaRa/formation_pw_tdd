@@ -1,13 +1,13 @@
-name: Notify Slack
-
-on: [push]
-
+on: push
+name: Slack Notification Demo
 jobs:
-  notify_slack:
+  slackNotification:
+    name: Slack Notification
     runs-on: ubuntu-latest
-    name: Notify Slack on Release
     steps:
-      - name: Notify Slack on Release
-        uses: instantish/notify-slack-on-release@1.0.0
-        with:
-          slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+    - uses: actions/checkout@v2
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        VAULT_ADDR: ${{ secrets.SLACK_WEBHOOK_URL }}
+        VAULT_TOKEN: ${{ secrets.SLACK_WEBHOOK_URL }}
