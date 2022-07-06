@@ -9,9 +9,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     
-    -name: Use composer
+    - name: Use composer
       uses: php-action/composer@v6
-      
+
     - name: Unit Test
       run: |
         php bin/phpunit
