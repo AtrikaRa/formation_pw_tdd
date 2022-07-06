@@ -9,11 +9,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     
-    -name: install phpunit
-      uses: php-actions/phpunit@v3
-        with:
-          configuration: custom/path/to/phpunit.xml
+    - name: Use composer
+      uses: php-actions/composer@v6
 
-    - name: Unit Test
-      run: |
-        php bin/phpunit
+    # - name: Unit Test
+    #   run: |
+    #     php bin/phpunit
