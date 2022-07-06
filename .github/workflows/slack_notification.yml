@@ -12,12 +12,23 @@
 #         VAULT_ADDR: ${{ secrets.SLACK_WEBHOOK_URL }}
 #         VAULT_TOKEN: ${{ secrets.SLACK_WEBHOOK_URL }}
 
-on: push
-name: Unit test
+name: CI
+
+on: [push]
+
 jobs:
-  slackNotification:
-    name: Slack Notification
+  build-test:
     runs-on: ubuntu-latest
-    run: |
-      php bin/phpunit
-      echo "TEST_STATUS"
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: php-actions/composer@v5
+
+      - name: PHPUnit Tests
+        uses: php-actions/phpunit@v2
+        env:
+          TEST_NAME: Scarlett
+        with:
+          configuration: test/phpunit.xml
+          args: --coverage-text
