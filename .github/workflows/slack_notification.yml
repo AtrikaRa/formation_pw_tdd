@@ -21,6 +21,7 @@ jobs:
     steps:
     - name: Check out repository code
       uses: actions/checkout@v3
-    - run: |
-        php bin/phpunit
-        echo "TEST_STATUS"
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
+    - name: PHPUnit
+        uses: chindit/actions-phpunit-symfony@master
