@@ -10,7 +10,8 @@ jobs:
       uses: actions/checkout@v3
     
     - name: Use composer
-      uses: php-actions/composer@v6
+      uses: |
+        php composer.phar install
 
     - name: Unit Test
       run: |
