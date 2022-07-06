@@ -9,9 +9,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     
-    - name: Use composer
-      run: |
-        php composer.phar install
+    -name: install phpunit
+      uses: php-actions/phpunit@v3
+        with:
+          configuration: custom/path/to/phpunit.xml
 
     - name: Unit Test
       run: |
