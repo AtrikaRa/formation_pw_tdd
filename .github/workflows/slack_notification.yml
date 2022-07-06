@@ -1,13 +1,23 @@
+# on: push
+# name: Slack Notification Demo
+# jobs:
+#   slackNotification:
+#     name: Slack Notification
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Slack Notification
+#       uses: rtCamp/action-slack-notify@v2
+#       env:
+#         VAULT_ADDR: ${{ secrets.SLACK_WEBHOOK_URL }}
+#         VAULT_TOKEN: ${{ secrets.SLACK_WEBHOOK_URL }}
+
 on: push
-name: Slack Notification Demo
+name: Unit test
 jobs:
   slackNotification:
     name: Slack Notification
     runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Slack Notification
-      uses: rtCamp/action-slack-notify@v2
-      env:
-        VAULT_ADDR: ${{ secrets.SLACK_WEBHOOK_URL }}
-        VAULT_TOKEN: ${{ secrets.SLACK_WEBHOOK_URL }}
+    run: |
+      php bin/phpunit
+      echo "TEST_STATUS"
