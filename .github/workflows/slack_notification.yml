@@ -5,7 +5,10 @@ jobs:
     name: Slack Notification
     runs-on: ubuntu-latest
     steps:
-    - name: Slack Notification
-    - run: curl -d "text=Thank you." -d "channel=C01Q1P075TJ" -H "Authorization: Bearer $SLACK_TOKEN" -X POST https://slack.com/api/chat.postMessage
+    - uses: actions/checkout@v3
+    - name: curl
+      uses: wei/curl@v1
+      with:
+        args: -d "text=Thank you." -d "channel=C01Q1P075TJ" -H "Authorization: Bearer $SLACK_TOKEN" -X POST https://slack.com/api/chat.postMessage
       env:
         SLACK_TOKEN: ${{ secrets.SLACK_WEBHOOK_TOKEN }}
