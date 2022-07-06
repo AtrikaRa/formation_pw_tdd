@@ -1,0 +1,17 @@
+on: push
+name: Unit test
+jobs:
+  unitTest:
+    name: Unit Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    -name: Use composer
+      uses: php-action/composer@v6
+      
+    - name: Unit Test
+      run: |
+        php bin/phpunit
