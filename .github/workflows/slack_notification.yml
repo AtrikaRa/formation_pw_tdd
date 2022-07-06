@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Slack Notification
-    - run: |
+      run: |
         curl -d "text=Thank you." -d "channel=C01Q1P075TJ" -H "Authorization: Bearer $SLACK_TOKEN" -X POST https://slack.com/api/chat.postMessage
       env:
         SLACK_TOKEN: ${{ secrets.SLACK_WEBHOOK_TOKEN }}
