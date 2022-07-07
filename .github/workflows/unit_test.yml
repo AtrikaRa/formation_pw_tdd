@@ -19,3 +19,6 @@ jobs:
     - name: Unit Test
       run: |
         php bin/phpunit
+    
+    - name: Show result
+    - run: echo "🍏 This job's status is ${{ job.status }}."
