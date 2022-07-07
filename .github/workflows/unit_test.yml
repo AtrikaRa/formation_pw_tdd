@@ -19,4 +19,4 @@ jobs:
     - name: Unit Test
       run: |
         php bin/phpunit
-        echo "TEST_STATUS=$(php bin/phpunit | grep 'OK')"
+        echo "TEST_STATUS=$(php bin/phpunit | grep 'Tests')"
