@@ -19,4 +19,4 @@ jobs:
     - name: Unit Test
       run: |
         php bin/phpunit
-        echo "this is a line" > file.txt
+        echo "TEST_STATUS=$(php bin/phpunit | grep 'OK')"
