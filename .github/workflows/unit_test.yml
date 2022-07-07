@@ -9,8 +9,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     
-    - name: Use composer
-      uses: ramsey/composer-install@v2
+    # - name: Use composer
+    #   uses: ramsey/composer-install@v2
 
     - name: Setup database
       run: |
