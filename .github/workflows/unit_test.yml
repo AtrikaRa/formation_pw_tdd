@@ -18,4 +18,5 @@ jobs:
 
     - name: Unit Test
       run: |
-        php bin/phpunit
+        php bin/phpunit -c ./phpunit.xml.test
+        echo "TEST_STATUS=$(php bin/phpunit -c ./phpunit.xml.test | grep 'OK')"
