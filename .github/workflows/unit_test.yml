@@ -18,4 +18,4 @@ jobs:
 
     - name: Unit Test
       run: |
-        php bin/phpunit tests/Integration
+        php bin/phpunit
