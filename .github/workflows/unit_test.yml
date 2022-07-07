@@ -21,4 +21,5 @@ jobs:
         php bin/phpunit
     
     - name: Show result
+      continue-on-error: true
       run: echo "🍏 This job's status is ${{ job.status }}."
