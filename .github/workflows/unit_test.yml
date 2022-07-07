@@ -12,6 +12,10 @@ jobs:
     - name: Use composer
       uses: php-actions/composer@v6
 
-    # - name: Unit Test
-    #   run: |
-    #     php bin/phpunit
+    - name: Setup database
+      run: |
+        php bin/console d:s:u -f --env='test'
+
+    - name: Unit Test
+      run: |
+        php bin/phpunit tests/Integration

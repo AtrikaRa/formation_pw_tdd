@@ -1,15 +1,41 @@
 <?php
 
 namespace App\Entity;
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Entity(repositoryClass=ContactDataRepository::class)
+ */
 class ContactData
 {
 
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue()
+     */
     private $id;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
     private $nom;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
     private $email;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
     private $sujet;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
     private $message;
+
 
     public function getId()
     {

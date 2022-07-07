@@ -3,19 +3,20 @@
 namespace App\Controller;
 
 use App\Entity\Task;
-use App\Entity\ContactData;
 use App\Form\ContactType;
+use App\Entity\ContactData;
 use App\Form\Type\TaskType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ContactController extends AbstractController
 {
     /**
      * @Route("/contact", name="contact")
      */
-    public function index(Request $request)
+    public function index(Request $request, EntityManagerInterface $em)
     {
         $data = new ContactData();
         $form = $this->createForm(ContactType::class, $data);
@@ -46,6 +47,8 @@ class ContactController extends AbstractController
             
             if($validForm){
 
+                $em->persist($data);
+                $em->flush();
                 $this->addFlash('success', 'Vore message a été envoyé');
             }
 
