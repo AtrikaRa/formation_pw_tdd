@@ -21,4 +21,4 @@ jobs:
         php bin/phpunit
     
     - name: Show result
-    - run: echo "🍏 This job's status is ${{ job.status }}."
+      run: echo "🍏 This job's status is ${{ job.status }}."
