@@ -22,4 +22,4 @@ jobs:
     
     - name: Show result
       if: always()
-      run: echo "🍏 This job's status is ${{ job.status }}."
+      run: echo "🍏 This job's status is ${{ job.status }} https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}."
