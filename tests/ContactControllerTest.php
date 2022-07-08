@@ -6,14 +6,6 @@ use Symfony\Component\Panther\PantherTestCase;
 
 class ContactControllerTest extends PantherTestCase
 {
-    public function testRenderExactContactPage() {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/contact');
-
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Nous contacter');
-
-    }
 
     public function testInvalidUsernameContactPage() {
         $client = static::createPantherClient([

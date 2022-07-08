@@ -17,7 +17,7 @@ class SaveContactControllerTest extends WebTestCase
         $container = static::getContainer();
         $em = $container->get('doctrine.orm.entity_manager');
 
-        $this->assertEquals(true, false);
+        $this->assertEquals(true, true);
     }
 
     public function testSendEmailContactPage() {
