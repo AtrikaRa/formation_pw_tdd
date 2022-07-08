@@ -23,6 +23,9 @@ jobs:
     - name: Show result in slack
       if: always()
       run: |
-        curl -d "text=🍏 This job's status is ${{ job.status }} https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }} ." -d "channel=C01Q1P075TJ" -H "Authorization: Bearer $SLACK_TOKEN" -X POST https://slack.com/api/chat.postMessage
+        if [[ ${{ job.status }} == "failure" ]]; then
+          curl -d "text=🍏 :disappointed_relieved: This job's status is ${{ job.status }} ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} ." -d "channel=C01Q1P075TJ" -H "Authorization: Bearer $SLACK_TOKEN" -X POST https://slack.com/api/chat.postMessage
+        else
+          curl -d "text=🎉 This job's status is ${{ job.status }} ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} ." -d "channel=C01Q1P075TJ" -H "Authorization: Bearer $SLACK_TOKEN" -X POST https://slack.com/api/chat.postMessage
       env:
         SLACK_TOKEN: ${{ secrets.SLACK_WEBHOOK_TOKEN }}
