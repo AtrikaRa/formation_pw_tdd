@@ -20,6 +20,9 @@ jobs:
       run: |
         php bin/phpunit
     
-    - name: Show result
+    - name: Show result in slack
       if: always()
-      run: echo "🍏 This job's status is ${{ job.status }} https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }} https://github.com/${{ github.repository }}/actions/runs/${{ github.job }}?check_suite_focus=true ${{ env.GITHUB_PATH }}."
+      run: |
+        curl -d "🍏 This job's status is ${{ job.status }} https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }} ." -d "channel=C01Q1P075TJ" -H "Authorization: Bearer $SLACK_TOKEN" -X POST https://slack.com/api/chat.postMessage
+      env:
+        SLACK_TOKEN: ${{ secrets.SLACK_WEBHOOK_TOKEN }}
