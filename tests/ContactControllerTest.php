@@ -31,7 +31,7 @@ class ContactControllerTest extends PantherTestCase
     public function testInvalidEmailContactPage() {
         $client = static::createPantherClient([
             "hostname" => "127.0.0.1",
-            "port" => "9992"
+            "port" => "9993"
         ]);
         
         $crawler = $client->request('GET', '/contact');
@@ -46,7 +46,7 @@ class ContactControllerTest extends PantherTestCase
 
         $client->submit($form);
 
-        $this->assertSelectorTextContains('.invalid-feedback', 'Email invalide');
+        $this->assertSelectorTextContains('.invalid-feedback', 'Email invalides');
     }
 
     public function testInvalidMessageContactPage() {
